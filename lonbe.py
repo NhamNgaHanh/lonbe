@@ -117,8 +117,8 @@ with col2:
     if tl != 0:
         st.subheader(f":red[Tỉ lệ ra lớn là: {round((lon/tl)*100,2)}]")
         st.subheader(f":red[Tỉ lệ ra bé là: {round((be / tl) * 100, 2)}]")
-        st.write( round((lon/tl)*100,2))
-        st.write( round((be / tl) * 100, 2))
+        #st.write( round((lon/tl)*100,2))
+        #st.write( round((be / tl) * 100, 2))
     num_r = []
     num_d = []
 with col1:
