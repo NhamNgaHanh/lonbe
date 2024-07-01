@@ -105,7 +105,7 @@ with col2:
                     else:
                         break
     tl = len(num_r)
-    st.write(tl)
+    st.subheader(f":blue[Số cầu ra là: {tl}]")
     lon = 0
     be = 0
     for nu in range(0,tl):
@@ -115,6 +115,8 @@ with col2:
         else:
             be = be + 1
     if tl != 0:
+        st.subheader(f":red[Tỉ lệ ra lớn là: {round((lon/tl)*100,2)}]")
+        st.subheader(f":red[Tỉ lệ ra bé là: {round((be / tl) * 100, 2)}]")
         st.write( round((lon/tl)*100,2))
         st.write( round((be / tl) * 100, 2))
     num_r = []
