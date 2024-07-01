@@ -86,6 +86,8 @@ with col2:
     if nd >= 2:
         kml = kd + 1
         dv = int(str(int(df.iloc[kd, 1]))[-2:])
+        if kd >= 1:
+            sn = sn + kd
         for i in range(kml,sn):
             l = int(str(int(df.iloc[i, 1]))[-2:])  # Lấy hai ký tự cuối cùng của giá trị và chuyển thành chuỗi
             if l >=50:
