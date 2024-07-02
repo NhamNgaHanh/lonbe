@@ -128,69 +128,69 @@ with tab1:
     with col1:
         st.image("images.jpg")
 with tab2:
-bot = int(st.number_input("Chọn cận dưới của ngày muốn kiểm tra:", step = 1))
-top = int(st.number_input("Chọn cận trên của ngày muốn kiểm tra:", step = 1))
-nd = int(st.number_input("Độ dài của cầu :", step = 1))
-sn = int(st.number_input("Chọn số ngày bạn muốn kiểm tra :", step = 1))
-bd = 1
-st.header(f":red[Cầu ] {nd}")
-num_r = []
-numx = []
-numy = []
-num_d = []
-win = 0
-lose = 0
-for kd in range(bot,top):
-    if nd >= 2:
-        for u in range(0, nd):
-            x_u = str(int(df.iloc[u+kd, 1]))[-2:]
-            numx.append(x_u)
-            if int(x_u) >= 50:
-                x_u = 1
-                numy.append(x_u)
-            else:
-                x_u = 0
-                numy.append(x_u)
-    if nd >= 2:
-        kml = kd + 1
-        dv = int(str(int(df.iloc[kd, 1]))[-2:])
-        if kd >= 1:
-            sd = sn + kd
-        for i in range(kml,sd):
-            l = int(str(int(df.iloc[i, 1]))[-2:])  # Lấy hai ký tự cuối cùng của giá trị và chuyển thành chuỗi
-            if l >=50:
-                l = 1
-            else:
-                l = 0
-            if l == int(numy[0]):
-                for p in range(1,nd):
-                    l_p = int(str(int(df.iloc[i + p, 1]))[-2:])
-                    if l_p >= 50:
-                        l_p = 1
-                    else:
-                        l_p = 0
-                    if l_p == int(numy[p]):
-                        if p == nd-1:
-                            num_r.append(str(int(df.iloc[i - 1, 1]))[-2:])
-                    else:
-                        break
-    tl = len(num_r)
-    lon = 0
-    be = 0
-    for nu in range(0,tl):
-        kh = int(num_r[nu])
-        if kh > 50:
-            lon = lon + 1
-        else:
-            be = be + 1
+    bot = int(st.number_input("Chọn cận dưới của ngày muốn kiểm tra:", step = 1))
+    top = int(st.number_input("Chọn cận trên của ngày muốn kiểm tra:", step = 1))
+    nd = int(st.number_input("Độ dài của cầu :", step = 1))
+    sn = int(st.number_input("Chọn số ngày bạn muốn kiểm tra :", step = 1))
+    bd = 1
+    st.header(f":red[Cầu ] {nd}")
     num_r = []
-    num_d = []
     numx = []
     numy = []
-    if tl != 0:
-        if (round((lon/tl)*100,2) >= 50 and int(str(int(df.iloc[kd - 1, 1]))[-2:]) >=50) or (round((be / tl) * 100, 2) > 50 and int(str(int(df.iloc[kd - 1, 1]))[-2:]) < 50):
-            win = win + 1
-        else:
-            lose = lose + 1
-st.header(f":red[Số lần thắng: ] {win}")
-st.header(f":red[Số lần thua: ] {lose}")
+    num_d = []
+    win = 0
+    lose = 0
+    for kd in range(bot,top):
+        if nd >= 2:
+            for u in range(0, nd):
+                x_u = str(int(df.iloc[u+kd, 1]))[-2:]
+                numx.append(x_u)
+                if int(x_u) >= 50:
+                    x_u = 1
+                    numy.append(x_u)
+                else:
+                    x_u = 0
+                    numy.append(x_u)
+        if nd >= 2:
+            kml = kd + 1
+            dv = int(str(int(df.iloc[kd, 1]))[-2:])
+            if kd >= 1:
+                sd = sn + kd
+            for i in range(kml,sd):
+                l = int(str(int(df.iloc[i, 1]))[-2:])  # Lấy hai ký tự cuối cùng của giá trị và chuyển thành chuỗi
+                if l >=50:
+                    l = 1
+                else:
+                    l = 0
+                if l == int(numy[0]):
+                    for p in range(1,nd):
+                        l_p = int(str(int(df.iloc[i + p, 1]))[-2:])
+                        if l_p >= 50:
+                            l_p = 1
+                        else:
+                            l_p = 0
+                        if l_p == int(numy[p]):
+                            if p == nd-1:
+                                num_r.append(str(int(df.iloc[i - 1, 1]))[-2:])
+                        else:
+                            break
+        tl = len(num_r)
+        lon = 0
+        be = 0
+        for nu in range(0,tl):
+            kh = int(num_r[nu])
+            if kh > 50:
+                lon = lon + 1
+            else:
+                be = be + 1
+        num_r = []
+        num_d = []
+        numx = []
+        numy = []
+        if tl != 0:
+            if (round((lon/tl)*100,2) >= 50 and int(str(int(df.iloc[kd - 1, 1]))[-2:]) >=50) or (round((be / tl) * 100, 2) > 50 and int(str(int(df.iloc[kd - 1, 1]))[-2:]) < 50):
+                win = win + 1
+            else:
+                lose = lose + 1
+    st.header(f":red[Số lần thắng: ] {win}")
+    st.header(f":red[Số lần thua: ] {lose}")
